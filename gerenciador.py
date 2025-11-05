@@ -2,7 +2,6 @@ def adicionar_tarefa(tarefas, nome_tarefa):
   tarefa={'tarefa': nome_tarefa, 'completa': False}
   tarefas.append(tarefa)
   print (f'Tarefa {nome_tarefa} foi adicionada com sucesso!')
-  return
 
 def ver_tarefas(tarefas):
   if not tarefas:
@@ -11,10 +10,9 @@ def ver_tarefas(tarefas):
 
   print('\nLista de Tarefas:')
   for indice, tarefa in enumerate(tarefas, start=1):
-    status = '✓' if tarefa['completa'] else '   '
+    status = ' ✓ ' if tarefa['completa'] else ' X '
     nome_tarefa = tarefa['tarefa']
     print(f'{indice}. [{status}] {nome_tarefa}')
-  return
 
 def atualizar_tarefa(tarefas, indice_tarefa, novo_nome_tarefa):
   indice_tarefa_ajustado = indice_tarefa -1
@@ -24,14 +22,22 @@ def atualizar_tarefa(tarefas, indice_tarefa, novo_nome_tarefa):
     print(f'Tarefa {indice_tarefa} atualizada para {novo_nome_tarefa} com sucesso!')
   else:
     print('Índice inválido.')
-  return
 
 def deletar_tarefa(tarefas, indice_tarefa_deletar):
   indice_tarefa_ajustado = indice_tarefa_deletar -1
   if indice_tarefa_ajustado >= 0 and indice_tarefa_ajustado < len(tarefas):
     del tarefas[indice_tarefa_ajustado]
     print(f'Tarefa {indice_tarefa_deletar} deletada com sucesso!')
-  return
+  else:
+    print('Tarefa não encontrada.')
+
+def deletar_tarefa_completada(tarefas):
+  for tarefa in tarefas:
+    if tarefa['completa']:
+      tarefas.remove(tarefa)
+      print('Tarefa completada deletada com sucesso!')
+    return
+  print('Não há tarefa completada para deletar.')
 
 def tarefa_completada(tarefas, completar_tarefa):
   indice_tarefa_ajustado = completar_tarefa -1
@@ -52,7 +58,8 @@ while True:
   print('3. Atualizar Tarefa')
   print('4. Completar Tarefa')
   print('5. Deletar Tarefa')
-  print('6. Sair')
+  print('6. Deletar Tarefa Completada')
+  print('7. Sair')
   
 
   escolha = input('Digite o número da opção desejada: ')
@@ -84,6 +91,11 @@ while True:
     ver_tarefas(tarefas)
 
   elif escolha == '6':
+    ver_tarefas(tarefas)
+    deletar_tarefa_completada(tarefas)
+    ver_tarefas(tarefas)
+
+  elif escolha == '7':
     break
 
   else:
