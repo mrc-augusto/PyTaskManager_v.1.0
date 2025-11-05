@@ -26,13 +26,13 @@ Um gerenciador de tarefas simples em Python para terminal.
    ```
 
 ## Menu
-- 1. Adicionar Tarefa
-- 2. Ver Tarefas
-- 3. Atualizar Tarefa
-- 4. Completar Tarefa
-- 5. Deletar Tarefa
-- 6. Deletar Tarefa Completada
-- 7. Sair
+1. Adicionar Tarefa
+2. Ver Tarefas
+3. Atualizar Tarefa
+4. Completar Tarefa
+5. Deletar Tarefa
+6. Deletar Tarefa Completada
+7. Sair
 
 ## Observações
 - As tarefas não são salvas após fechar o programa (não há persistência).
